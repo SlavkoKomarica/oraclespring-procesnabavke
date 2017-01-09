@@ -18,8 +18,7 @@ public class TipProizvoda {
 
     @ElementCollection
     @CollectionTable(name = "pdvistorija", joinColumns = @JoinColumn(name = "sifra_tipa_proizvoda", referencedColumnName = "sifra_tipa_proizvoda"))
-    @MapKeyColumn(name = "datum")
-    private Map<Date, PdvIstorija> pdvIstorija = new HashMap<>();
+    private Set<PdvIstorija> pdvIstorija = new HashSet<>();
 
     public Long getSifraTipaProizvoda() {
         return sifraTipaProizvoda;
@@ -37,11 +36,11 @@ public class TipProizvoda {
         this.nazivTipaProizvoda = nazivTipaProizvoda;
     }
 
-    public Map<Date, PdvIstorija> getPdvIstorija() {
+    public Set<PdvIstorija> getPdvIstorija() {
         return pdvIstorija;
     }
 
-    public void setPdvIstorija(Map<Date, PdvIstorija> pdvIstorija) {
+    public void setPdvIstorija(Set<PdvIstorija> pdvIstorija) {
         this.pdvIstorija = pdvIstorija;
     }
 }

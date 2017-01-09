@@ -11,8 +11,21 @@ import java.util.Set;
 @Embeddable
 public class PdvIstorija {
 
+    //not null columns will be used with
+    //parent primary key to create composite primary key for this table
+    @Column(nullable = false)
+    private Date datum;
+
     @Column(name = "pdv_stopa")
     private Double pdvStopa;
+
+    public Date getDatum() {
+        return datum;
+    }
+
+    public void setDatum(Date datum) {
+        this.datum = datum;
+    }
 
     public Double getPdvStopa() {
         return pdvStopa;
