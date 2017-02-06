@@ -4,22 +4,21 @@ import slavko.baze2.procesnabavke.BaseEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
  * @author Slavko Komarica
  */
 @Entity
-@Table(name = "jedinica_mere")
-public class JedinicaMere extends BaseEntity {
+@Table(name = "nacin_otpreme")
+public class NacinOtpreme extends BaseEntity {
     @Column
     private String naziv;
 
-    public JedinicaMere() {
+    public NacinOtpreme() {
     }
 
-    public JedinicaMere(Long sifra, String naziv) {
+    public NacinOtpreme(Long sifra, String naziv) {
         this.sifra = sifra;
         this.naziv = naziv;
     }

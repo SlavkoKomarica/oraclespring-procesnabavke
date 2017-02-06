@@ -1,8 +1,9 @@
 package slavko.baze2.procesnabavke.domain;
 
+import slavko.baze2.procesnabavke.BaseEntity;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -10,22 +11,26 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "zaposleni")
-public class Zaposleni {
-    @Id
-    @Column(name = "sifra_zaposlenog")
-    private Long sifraZaposlenog;
+public class Zaposleni extends BaseEntity {
+
     @Column
     private String ime;
+
+    @Column
+    private String prezime;
+
     @Column(name = "jmbg", columnDefinition = "JMBG_TYPE")
     @org.hibernate.annotations.Type(type = "slavko.baze2.procesnabavke.domain.Jmbg")
     private Jmbg jmbg;
 
-    public Long getSifraZaposlenog() {
-        return sifraZaposlenog;
+    public Zaposleni() {
     }
 
-    public void setSifraZaposlenog(Long sifraZaposlenog) {
-        this.sifraZaposlenog = sifraZaposlenog;
+    public Zaposleni(Long sifra, String ime, String prezime, Jmbg jmbg) {
+        this.sifra = sifra;
+        this.ime = ime;
+        this.prezime = prezime;
+        this.jmbg = jmbg;
     }
 
     public String getIme() {
@@ -36,20 +41,19 @@ public class Zaposleni {
         this.ime = ime;
     }
 
+    public String getPrezime() {
+        return prezime;
+    }
+
+    public void setPrezime(String prezime) {
+        this.prezime = prezime;
+    }
+
     public Jmbg getJmbg() {
         return jmbg;
     }
 
     public void setJmbg(Jmbg jmbg) {
         this.jmbg = jmbg;
-    }
-
-    @Override
-    public String toString() {
-        return "Zaposleni{" +
-                "sifraZaposlenog=" + sifraZaposlenog +
-                ", ime='" + ime + '\'' +
-                ", jmbg=" + (jmbg == null ? "" : jmbg.getJmbg()) +
-                '}';
     }
 }

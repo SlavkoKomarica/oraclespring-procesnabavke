@@ -1,9 +1,8 @@
 package slavko.baze2.procesnabavke.domain;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * @author Slavko Komarica
@@ -11,13 +10,19 @@ import java.util.Set;
 @Embeddable
 public class PdvIstorija {
 
-    //not null columns will be used with
-    //parent primary key to create composite primary key for this table
     @Column(nullable = false)
     private Date datum;
 
-    @Column(name = "pdv_stopa")
-    private Double pdvStopa;
+    @Column
+    private Double stopa;
+
+    public PdvIstorija() {
+    }
+
+    public PdvIstorija(Date datum, Double stopa) {
+        this.datum = datum;
+        this.stopa = stopa;
+    }
 
     public Date getDatum() {
         return datum;
@@ -27,11 +32,11 @@ public class PdvIstorija {
         this.datum = datum;
     }
 
-    public Double getPdvStopa() {
-        return pdvStopa;
+    public Double getStopa() {
+        return stopa;
     }
 
-    public void setPdvStopa(Double pdvStopa) {
-        this.pdvStopa = pdvStopa;
+    public void setStopa(Double stopa) {
+        this.stopa = stopa;
     }
 }

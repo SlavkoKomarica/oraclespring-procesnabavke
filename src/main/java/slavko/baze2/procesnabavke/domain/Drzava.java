@@ -2,24 +2,22 @@ package slavko.baze2.procesnabavke.domain;
 
 import slavko.baze2.procesnabavke.BaseEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @author Slavko Komarica
  */
 @Entity
-@Table(name = "jedinica_mere")
-public class JedinicaMere extends BaseEntity {
+@Table(name = "drzava")
+public class Drzava extends BaseEntity {
+
     @Column
     private String naziv;
 
-    public JedinicaMere() {
+    public Drzava() {
     }
 
-    public JedinicaMere(Long sifra, String naziv) {
+    public Drzava(Long sifra, String naziv) {
         this.sifra = sifra;
         this.naziv = naziv;
     }
@@ -31,4 +29,5 @@ public class JedinicaMere extends BaseEntity {
     public void setNaziv(String naziv) {
         this.naziv = naziv;
     }
+
 }
