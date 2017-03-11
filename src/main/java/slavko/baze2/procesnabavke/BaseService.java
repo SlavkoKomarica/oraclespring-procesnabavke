@@ -35,6 +35,17 @@ public abstract class BaseService<T, ID extends Serializable> {
         return result;
     }
 
+    @Transactional(readOnly = true)
+    public T get(ID id) {
+        logger.debug("Getting all {}", entityType.getSimpleName());
+
+        T result = repository.findOne(id);
+
+        logger.debug("All {} found: {}", entityType.getSimpleName(), result);
+
+        return result;
+    }
+
     @Transactional
     public T create(T t) {
         logger.debug("Creating {} from {}", entityType.getSimpleName(), t);

@@ -1,7 +1,6 @@
 package slavko.baze2.procesnabavke.domain;
 
 import lombok.ToString;
-import org.hibernate.annotations.Type;
 import slavko.baze2.procesnabavke.BaseEntity;
 
 import javax.persistence.*;
@@ -52,7 +51,7 @@ public class Ponuda extends BaseEntity {
 
     @ElementCollection
     @CollectionTable(name = "stavke_ponude", joinColumns = @JoinColumn(name = "sifra_ponude", referencedColumnName = "sifra"))
-    private Set<StavkePonude> stavke = new HashSet<>();
+    private Set<StavkaPonude> stavke = new HashSet<>();
 
     public Ponuda() {
     }
@@ -152,11 +151,11 @@ public class Ponuda extends BaseEntity {
         this.primio = primio;
     }
 
-    public Set<StavkePonude> getStavke() {
+    public Set<StavkaPonude> getStavke() {
         return stavke;
     }
 
-    public void setStavke(Set<StavkePonude> stavke) {
+    public void setStavke(Set<StavkaPonude> stavke) {
         this.stavke = stavke;
     }
 
@@ -172,7 +171,7 @@ public class Ponuda extends BaseEntity {
         private Dobavljac dobavljac;
         private Long sifraPrimio;
         private Zaposleni primio;
-        private Set<StavkePonude> stavke;
+        private Set<StavkaPonude> stavke;
 
         public Builder() {
         }
@@ -232,7 +231,7 @@ public class Ponuda extends BaseEntity {
             return this;
         }
 
-        public Builder withStavke(Set<StavkePonude> val) {
+        public Builder withStavke(Set<StavkaPonude> val) {
             stavke = val;
             return this;
         }

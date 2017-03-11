@@ -10,6 +10,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import slavko.baze2.procesnabavke.domain.*;
 import slavko.baze2.procesnabavke.repositories.*;
 
+import javax.persistence.EntityManager;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static slavko.baze2.procesnabavke.services.ServicesFixture.*;
 
@@ -21,10 +23,17 @@ import static slavko.baze2.procesnabavke.services.ServicesFixture.*;
 public class ServicesTest {
 
     @Autowired
+    private EntityManager entityManager;
+
+    @Autowired
     private ValutaRepo valutaRepo;
     @Autowired
     private ValutaService valutaService;
 
+    @Autowired
+    private ProizvodRepo proizvodRepo;
+    @Autowired
+    private ProizvodService proizvodService;
 
     @Autowired
     private PonudaRepo ponudaRepo;
@@ -75,11 +84,13 @@ public class ServicesTest {
         ugovorRepo.deleteAll();
         zaposleniRepo.deleteAll();
         ponudaRepo.deleteAll();
+        proizvodRepo.deleteAll();
         valutaRepo.deleteAll();
     }
 
     private void createTestData() {
         valutaService.create(standardValuta());
+        proizvodService.create(standardProizvod());
         ponudaService.create(standardPonuda());
         zaposleniService.create(standardZaposleni());
         ugovorService.create(standardUgovor());
@@ -113,5 +124,11 @@ public class ServicesTest {
         assertThat(otpremnica.getNazivDobavljaca()).isEqualTo(STANDARD_NAZIV_DOBAVLJACA_UPDATED);
     }
 
+    // UGOVOR & PONUDA & PROIZVOD AKTUELNA CENA OPTIMIZACIJA
+    @Test
+    public void proizvodShouldHaveAktuelnaCenaSetFromLastInsertedOrUpdatedUgovorPonuda() {
+        Proizvod proizvod = proizvodRepo.findOne(STANDARD_SIFRA_PROIZVODA);
+        assertThat(proizvod.getAktCena()).isEqualTo(STANDARD_STAVKA_PONUDE_CENA);
+    }
 
 }

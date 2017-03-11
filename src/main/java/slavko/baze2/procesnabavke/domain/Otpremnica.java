@@ -59,7 +59,7 @@ public class Otpremnica {
     @CollectionTable(name = "stavke_otpremnice", joinColumns = {
             @JoinColumn(name = "sifra_dobavljaca", referencedColumnName = "sifra_dobavljaca"),
             @JoinColumn(name = "broj_otpremnice", referencedColumnName = "broj_otpremnice")})
-    private Set<StavkeOtpremnice> stavke = new HashSet<>();
+    private Set<StavkaOtpremnice> stavke = new HashSet<>();
 
     public Otpremnica() {
     }
@@ -167,11 +167,11 @@ public class Otpremnica {
         this.nacinOtpreme = nacinOtpreme;
     }
 
-    public Set<StavkeOtpremnice> getStavke() {
+    public Set<StavkaOtpremnice> getStavke() {
         return stavke;
     }
 
-    public void setStavke(Set<StavkeOtpremnice> stavke) {
+    public void setStavke(Set<StavkaOtpremnice> stavke) {
         this.stavke = stavke;
     }
 
@@ -187,7 +187,7 @@ public class Otpremnica {
         private Narudzbenica narudzbenica;
         private Long sifraNacinaOtpreme;
         private NacinOtpreme nacinOtpreme;
-        private Set<StavkeOtpremnice> stavke;
+        private Set<StavkaOtpremnice> stavke;
 
         public Builder() {
         }
@@ -247,7 +247,7 @@ public class Otpremnica {
             return this;
         }
 
-        public Builder withStavke(Set<StavkeOtpremnice> val) {
+        public Builder withStavke(Set<StavkaOtpremnice> val) {
             stavke = val;
             return this;
         }

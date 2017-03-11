@@ -11,7 +11,7 @@ import java.util.Set;
  * @author Slavko Komarica
  */
 @Entity
-@Table(name = "tip_proizvoda")
+@Table(name = "tipproizvoda")
 @ToString
 public class TipProizvoda extends BaseEntity {
 

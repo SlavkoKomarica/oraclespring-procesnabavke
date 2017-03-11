@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
  */
 @Embeddable
 @ToString
-public class StavkePonude {
+public class StavkaPonude {
 
     @Column(name = "br_stavke", nullable = false)
     private Long brStavke;
@@ -26,11 +26,15 @@ public class StavkePonude {
     @Column(name = "sifra_proizvoda")
     private Long sifraProizvoda;
 
-    @ManyToOne
-    @JoinColumn(name = "sifra_proizvoda", insertable = false, updatable = false)
-    private Proizvod proizvod;
+    public StavkaPonude() {
+    }
 
-    public StavkePonude() {
+    private StavkaPonude(Builder builder) {
+        setBrStavke(builder.brStavke);
+        setKolicina(builder.kolicina);
+        setRabat(builder.rabat);
+        setCena(builder.cena);
+        setSifraProizvoda(builder.sifraProizvoda);
     }
 
     public Long getBrStavke() {
@@ -73,13 +77,44 @@ public class StavkePonude {
         this.sifraProizvoda = sifraProizvoda;
     }
 
-    public Proizvod getProizvod() {
-        return proizvod;
+
+    public static final class Builder {
+        private Long brStavke;
+        private Integer kolicina;
+        private Double rabat;
+        private Double cena;
+        private Long sifraProizvoda;
+
+        public Builder() {
+        }
+
+        public Builder withBrStavke(Long val) {
+            brStavke = val;
+            return this;
+        }
+
+        public Builder withKolicina(Integer val) {
+            kolicina = val;
+            return this;
+        }
+
+        public Builder withRabat(Double val) {
+            rabat = val;
+            return this;
+        }
+
+        public Builder withCena(Double val) {
+            cena = val;
+            return this;
+        }
+
+        public Builder withSifraProizvoda(Long val) {
+            sifraProizvoda = val;
+            return this;
+        }
+
+        public StavkaPonude build() {
+            return new StavkaPonude(this);
+        }
     }
-
-    public void setProizvod(Proizvod proizvod) {
-        this.proizvod = proizvod;
-    }
-
-
 }
