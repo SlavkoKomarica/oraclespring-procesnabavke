@@ -29,7 +29,7 @@ public class ZaposleniRepoTest {
         try {
             zaposleniRepo.insert(standardZaposleni());
         } catch (Exception e) {
-            e.printStackTrace();
+            //jmbg problem, but insert should be successful
         }
 
         System.out.println("Second find: " + zaposleniRepo.findAll());

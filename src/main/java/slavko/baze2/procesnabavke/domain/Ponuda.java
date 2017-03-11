@@ -1,5 +1,6 @@
 package slavko.baze2.procesnabavke.domain;
 
+import lombok.ToString;
 import org.hibernate.annotations.Type;
 import slavko.baze2.procesnabavke.BaseEntity;
 
@@ -13,6 +14,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "ponuda")
+@ToString
 public class Ponuda extends BaseEntity {
 
     @Column(name = "datum_ponude")

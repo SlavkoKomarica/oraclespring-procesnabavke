@@ -1,10 +1,13 @@
 package slavko.baze2.procesnabavke.domain;
 
+import lombok.ToString;
+
 import java.io.Serializable;
 
 /**
  * @author Sinisa Komarica
  */
+@ToString
 public class OtpremnicaId implements Serializable {
 
     private Long sifraDobavljaca;

@@ -1,5 +1,7 @@
 package slavko.baze2.procesnabavke.domain;
 
+import lombok.ToString;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
@@ -9,6 +11,7 @@ import javax.persistence.ManyToOne;
  * @author Slavko Komarica
  */
 @Embeddable
+@ToString
 public class StavkePonude {
 
     @Column(name = "br_stavke", nullable = false)

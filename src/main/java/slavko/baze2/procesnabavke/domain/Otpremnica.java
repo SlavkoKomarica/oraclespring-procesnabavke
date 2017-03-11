@@ -1,5 +1,7 @@
 package slavko.baze2.procesnabavke.domain;
 
+import lombok.ToString;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
@@ -11,6 +13,7 @@ import java.util.Set;
 @Entity
 @Table(name = "otpremnica")
 @IdClass(OtpremnicaId.class)
+@ToString
 public class Otpremnica {
 
     @Id

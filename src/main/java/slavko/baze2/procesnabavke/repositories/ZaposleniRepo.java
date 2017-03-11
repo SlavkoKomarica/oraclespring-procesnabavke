@@ -1,18 +1,16 @@
 package slavko.baze2.procesnabavke.repositories;
 
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
+import slavko.baze2.procesnabavke.BaseRepository;
 import slavko.baze2.procesnabavke.domain.Zaposleni;
 
 import java.util.List;
-import java.util.Set;
 
 /**
  * @author Slavko Komarica
  */
-public interface ZaposleniRepo extends CrudRepository<Zaposleni, Long> {
+public interface ZaposleniRepo extends BaseRepository<Zaposleni, Long> {
 
     @Override
     @Query(nativeQuery = true, value = "SELECT z.sifra, z.ime, z.prezime, z.jmbg.get() as jmbg FROM ZAPOSLENI z")

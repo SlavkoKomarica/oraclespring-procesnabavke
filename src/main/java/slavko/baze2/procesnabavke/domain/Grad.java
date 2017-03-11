@@ -1,5 +1,6 @@
 package slavko.baze2.procesnabavke.domain;
 
+import lombok.ToString;
 import slavko.baze2.procesnabavke.BaseEntity;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "grad")
+@ToString
 public class Grad extends BaseEntity {
 
     @Column

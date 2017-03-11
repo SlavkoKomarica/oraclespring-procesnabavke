@@ -1,5 +1,7 @@
 package slavko.baze2.procesnabavke.domain;
 
+import lombok.ToString;
+
 import javax.persistence.*;
 
 /**
@@ -7,6 +9,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "zaposleni_detalji")
+@ToString
 public class ZaposleniDetalji {
 
 

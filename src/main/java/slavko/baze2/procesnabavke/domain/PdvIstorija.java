@@ -1,5 +1,7 @@
 package slavko.baze2.procesnabavke.domain;
 
+import lombok.ToString;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.util.Date;
@@ -8,6 +10,7 @@ import java.util.Date;
  * @author Slavko Komarica
  */
 @Embeddable
+@ToString
 public class PdvIstorija {
 
     @Column(nullable = false)
