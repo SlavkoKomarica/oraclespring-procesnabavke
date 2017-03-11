@@ -15,6 +15,11 @@ public class OtpremnicaId implements Serializable {
 
     }
 
+    public OtpremnicaId(Long sifraDobavljaca, Long brojOtpremnice) {
+        this.sifraDobavljaca = sifraDobavljaca;
+        this.brojOtpremnice = brojOtpremnice;
+    }
+
     public Long getSifraDobavljaca() {
         return sifraDobavljaca;
     }

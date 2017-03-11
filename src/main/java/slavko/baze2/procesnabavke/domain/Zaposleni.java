@@ -56,4 +56,13 @@ public class Zaposleni extends BaseEntity {
     public void setJmbg(Jmbg jmbg) {
         this.jmbg = jmbg;
     }
+
+    @Override
+    public String toString() {
+        return "Zaposleni{" +
+                "ime='" + ime + '\'' +
+                ", prezime='" + prezime + '\'' +
+                ", jmbg=" + (jmbg == null ? "null" : jmbg.getJmbg()) +
+                '}';
+    }
 }

@@ -25,7 +25,7 @@ public class Proizvod extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "sifra_tipa_proizvoda", insertable = false, updatable = false)
-    private TipProizvoda drzava;
+    private TipProizvoda tipProizvoda;
 
     @Column(name = "sifra_jedinice_mere")
     private Long sifraJediniceMere;
@@ -39,12 +39,12 @@ public class Proizvod extends BaseEntity {
     }
 
     private Proizvod(Builder builder) {
+        setSifra(builder.sifra);
         setNaziv(builder.naziv);
         setAktCena(builder.aktCena);
-        setSifra(builder.sifra);
         setOpis(builder.opis);
         setSifraTipaProizvoda(builder.sifraTipaProizvoda);
-        setDrzava(builder.drzava);
+        setTipProizvoda(builder.tipProizvoda);
         setSifraJediniceMere(builder.sifraJediniceMere);
         setJedinicaMere(builder.jedinicaMere);
     }
@@ -81,12 +81,12 @@ public class Proizvod extends BaseEntity {
         this.sifraTipaProizvoda = sifraTipaProizvoda;
     }
 
-    public TipProizvoda getDrzava() {
-        return drzava;
+    public TipProizvoda getTipProizvoda() {
+        return tipProizvoda;
     }
 
-    public void setDrzava(TipProizvoda drzava) {
-        this.drzava = drzava;
+    public void setTipProizvoda(TipProizvoda tipProizvoda) {
+        this.tipProizvoda = tipProizvoda;
     }
 
     public Long getSifraJediniceMere() {
@@ -105,17 +105,23 @@ public class Proizvod extends BaseEntity {
         this.jedinicaMere = jedinicaMere;
     }
 
+
     public static final class Builder {
+        private Long sifra;
         private String naziv;
         private Double aktCena;
-        private Long sifra;
         private String opis;
         private Long sifraTipaProizvoda;
-        private TipProizvoda drzava;
+        private TipProizvoda tipProizvoda;
         private Long sifraJediniceMere;
         private JedinicaMere jedinicaMere;
 
         public Builder() {
+        }
+
+        public Builder withSifra(Long val) {
+            sifra = val;
+            return this;
         }
 
         public Builder withNaziv(String val) {
@@ -125,11 +131,6 @@ public class Proizvod extends BaseEntity {
 
         public Builder withAktCena(Double val) {
             aktCena = val;
-            return this;
-        }
-
-        public Builder withSifra(Long val) {
-            sifra = val;
             return this;
         }
 
@@ -143,8 +144,8 @@ public class Proizvod extends BaseEntity {
             return this;
         }
 
-        public Builder withDrzava(TipProizvoda val) {
-            drzava = val;
+        public Builder withTipProizvoda(TipProizvoda val) {
+            tipProizvoda = val;
             return this;
         }
 

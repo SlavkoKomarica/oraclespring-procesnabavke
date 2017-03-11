@@ -21,7 +21,7 @@ public class Ponuda extends BaseEntity {
     @Column(name = "rok_placanja")
     private Date rokPlacanja;
 
-    @Column(name = "datum_narucivanja")
+    @Column(name = "napomena")
     private String napomena;
 
     @Column(name = "sifra_valute")
@@ -48,11 +48,6 @@ public class Ponuda extends BaseEntity {
     @JoinColumn(name = "sifra_zap_primio", insertable = false, updatable = false)
     private Zaposleni primio;
 
-
-    @Column(name = "nacin_placanja", columnDefinition = "obj_nacin_placanja")
-    @Type(type = "slavko.baze2.procesnabavke.domain.NacinPlacanja")
-    private NacinPlacanja nacinPlacanja;
-
     @ElementCollection
     @CollectionTable(name = "stavke_ponude", joinColumns = @JoinColumn(name = "sifra_ponude", referencedColumnName = "sifra"))
     private Set<StavkePonude> stavke = new HashSet<>();
@@ -72,7 +67,6 @@ public class Ponuda extends BaseEntity {
         setDobavljac(builder.dobavljac);
         setSifraPrimio(builder.sifraPrimio);
         setPrimio(builder.primio);
-        setNacinPlacanja(builder.nacinPlacanja);
         setStavke(builder.stavke);
     }
 
@@ -156,14 +150,6 @@ public class Ponuda extends BaseEntity {
         this.primio = primio;
     }
 
-    public NacinPlacanja getNacinPlacanja() {
-        return nacinPlacanja;
-    }
-
-    public void setNacinPlacanja(NacinPlacanja nacinPlacanja) {
-        this.nacinPlacanja = nacinPlacanja;
-    }
-
     public Set<StavkePonude> getStavke() {
         return stavke;
     }
@@ -184,7 +170,6 @@ public class Ponuda extends BaseEntity {
         private Dobavljac dobavljac;
         private Long sifraPrimio;
         private Zaposleni primio;
-        private NacinPlacanja nacinPlacanja;
         private Set<StavkePonude> stavke;
 
         public Builder() {
@@ -242,11 +227,6 @@ public class Ponuda extends BaseEntity {
 
         public Builder withPrimio(Zaposleni val) {
             primio = val;
-            return this;
-        }
-
-        public Builder withNacinPlacanja(NacinPlacanja val) {
-            nacinPlacanja = val;
             return this;
         }
 

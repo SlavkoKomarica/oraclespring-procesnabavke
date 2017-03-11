@@ -88,7 +88,11 @@ public class Jmbg implements UserType, Serializable {
             throws HibernateException, SQLException {
         System.out.println("nullSafeGet...");
         //must write custom native query in repo for this to work with jmbg alias
-        return new Jmbg(resultSet.getString("jmbg"));
+        try {
+            return new Jmbg(resultSet.getString("jmbg"));
+        } catch (SQLException e) {
+            return new Jmbg("unable-to-fetch");
+        }
     }
 
     public void nullSafeSet(final PreparedStatement statement, final Object value, final int index,

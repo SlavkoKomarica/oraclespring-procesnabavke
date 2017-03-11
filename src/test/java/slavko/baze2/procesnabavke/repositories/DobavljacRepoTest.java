@@ -18,9 +18,7 @@ import static org.junit.Assert.assertEquals;
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-//@Sql(scripts = {"/fixture/dobavljac_before.sql"}, executionPhase = BEFORE_TEST_METHOD)
-//@Sql(scripts = {"/fixture/dobavljac_after.sql"}, executionPhase = AFTER_TEST_METHOD)
-public class DobavljacTest {
+public class DobavljacRepoTest {
 
     @Autowired
     DobavljacRepo dobavljacRepo;

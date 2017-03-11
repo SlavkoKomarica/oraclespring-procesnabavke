@@ -12,10 +12,16 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "valuta")
 public class Valuta extends BaseEntity {
+
     @Column
     private String naziv;
 
     public Valuta() {
+
+    }
+
+    public Valuta(String naziv) {
+        this.naziv = naziv;
     }
 
     public Valuta(Long sifra, String naziv) {
