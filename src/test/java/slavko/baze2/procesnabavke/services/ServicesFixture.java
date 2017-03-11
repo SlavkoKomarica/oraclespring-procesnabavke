@@ -29,6 +29,7 @@ public class ServicesFixture {
     public static final Jmbg STANDARD_JMBG_ZAPOSLENOG = new Jmbg("0212995654823");
 
     public static final long STANDARD_SIFRA_NARUDZBENICE = 1l;
+    public static final int STANDARD_NARUDZBENICA_KOILCINA = 10;
 
     public static final long STANDARD_BROJ_OTPREMNICE = 1l;
 
@@ -97,12 +98,18 @@ public class ServicesFixture {
     }
 
     public static Narudzbenica standardNarudzbenica() {
+        StavkaNarudzbenice stavkaNarudzbenice1 = new StavkaNarudzbenice.Builder()
+                .withBrStavke(1L)
+                .withKolicina(STANDARD_NARUDZBENICA_KOILCINA)
+                .withSifraProizvoda(STANDARD_SIFRA_PROIZVODA).build();
+
         return new Narudzbenica.Builder()
                 .withSifra(STANDARD_SIFRA_NARUDZBENICE)
                 .withDatumKreiranja(STANDARD_DATUM)
                 .withSifraObracunao(STANDARD_SIFRA_ZAPOSLENOG)
                 .withSifraOdobrio(STANDARD_SIFRA_ZAPOSLENOG)
-                .withSifraUgovora(STANDARD_SIFRA_UGOVORA).build();
+                .withSifraUgovora(STANDARD_SIFRA_UGOVORA)
+                .withStavke(new HashSet<>(Arrays.asList(stavkaNarudzbenice1))).build();
     }
 
     public static Dobavljac standardDobavljac() {

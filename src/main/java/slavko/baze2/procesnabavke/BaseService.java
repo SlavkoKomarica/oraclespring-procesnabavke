@@ -37,11 +37,11 @@ public abstract class BaseService<T, ID extends Serializable> {
 
     @Transactional(readOnly = true)
     public T get(ID id) {
-        logger.debug("Getting all {}", entityType.getSimpleName());
+        logger.debug("Getting {} with id {}", entityType.getSimpleName(), id);
 
         T result = repository.findOne(id);
 
-        logger.debug("All {} found: {}", entityType.getSimpleName(), result);
+        logger.debug("{} with id {} found: {}", entityType.getSimpleName(), id, result);
 
         return result;
     }

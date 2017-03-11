@@ -131,4 +131,11 @@ public class ServicesTest {
         assertThat(proizvod.getAktCena()).isEqualTo(STANDARD_STAVKA_PONUDE_CENA);
     }
 
+    // NARUDZBENICA & STAVKE UKUPNO OPTIMIZACIJA
+    @Test
+    public void narudzbenicaShouldHaveCalculatedUkupno() {
+        Narudzbenica narudzbenica = narudzbenicaRepo.findOne(STANDARD_SIFRA_NARUDZBENICE);
+        assertThat(narudzbenica.getUkupno()).isEqualTo(STANDARD_NARUDZBENICA_KOILCINA * STANDARD_STAVKA_PONUDE_CENA);
+    }
+
 }
